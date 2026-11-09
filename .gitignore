@@ -1,0 +1,25 @@
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# macOS
+.DS_Store
+
+# Secrets and credentials
+.env
+.env.*
+!.env.example
+.aws/
+*.pem
+*.key
+credentials
+
+# Local query exports
+sql/view_result.json
+
+# Raw AWS configuration exports — review before publishing
+glue_jobs/*.json
+infrastructure/*.json
+sql/orders_iceberg_schema.json
