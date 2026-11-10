@@ -33,6 +33,25 @@ See [Architecture and Data Flow](docs/architecture.md) for the system diagram an
 - **Analytics:** Athena calculates daily and cumulative revenue.
 - **Monitoring:** EventBridge and SNS provide Glue failure notifications.
 
+## Testing and Quality Assurance
+
+The project includes automated unit tests and AWS integration tests.
+
+**Automated testing**
+- 16 passing pytest tests covering dataset integrity and PySpark transformations.
+- GitHub Actions runs the test suite on repository changes.
+
+**AWS integration testing**
+- Verified Iceberg INSERT and UPDATE operations.
+- Verified Glue bookmark behavior when no new input exists.
+- Verified logical replay without duplicate order insertion.
+- Confirmed that invalid financial records cause controlled Glue job failures.
+- Verified that failed validation preserves existing Iceberg records.
+
+The integration tests use an isolated Glue job and Iceberg table. The original pipeline has not yet been migrated to the new validation module.
+
+See [Integration Test Results](docs/integration_tests.md) for implementation details and observed outcomes.
+
 ## Validated Results
 
 | Metric | Result |
